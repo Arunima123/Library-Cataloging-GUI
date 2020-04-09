@@ -7,7 +7,7 @@ import java.sql.SQLException;
 //import javafx.scene.text.Text;
 import java.util.ResourceBundle;
 
-import application.DBconnect;
+//import application.DBconnect;
 import constants.Constants;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,28 +41,11 @@ public class ArticleListControl implements Initializable {
 
 	 String[] columnNames = new String[] {"ID", "Title", "No of Pages", "Year of Publishing"};
 	
-	/*@FXML private TableView tableView;
-    @FXML private TableColumn myId;
-    @FXML private TableColumn myTitle;
-    @FXML private TableColumn myPages;
-    @FXML private TableColumn myYear; */
-	  	   
-	 
-	 	@Override
+
+	  @Override
 	   public void initialize(URL location, ResourceBundle resources) {
 	 
-	       // TODO (don't really need to do anything here).
-		  // System.out.println(Constants.count);
-		//   myList1.setText(Constants.count1);
-		//   myList2.setText(Constants.count2);
-		   
-		   /* myId.setCellValueFactory(new PropertyValueFactory("id"));
-	        myTitle.setCellValueFactory(new PropertyValueFactory("name"));
-	        myPages.setCellValueFactory(new PropertyValueFactory("active"));
-	        myYear.setCellValueFactory(new PropertyValueFactory("active"));
-
-	        tableView.getItems().setAll(myId,myTitle,myPages,myYear);
-	        */
+	       
 	 		
 		   ObservableList<String> row= FXCollections.observableArrayList();
 		   data = FXCollections.observableArrayList();
