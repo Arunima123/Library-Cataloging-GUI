@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="324.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontPage.MyController"> 
+   <children>
+      <Button fx:id="myAdmin" layoutX="55.0" layoutY="103.0" mnemonicParsing="false" onAction="#adminLogin" prefHeight="46.0" prefWidth="105.0" text="ADMIN" />
+      <Button fx:id="myFeedback" layoutX="238.0" layoutY="103.0" mnemonicParsing="false" onAction="#getFeedback" prefHeight="46.0" prefWidth="140.0" text="FEEDBACK (Users)" />
+      <Button fx:id="myUser" layoutX="55.0" layoutY="180.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="46.0" prefWidth="105.0" text="USER" />
+      <Button fx:id="myStaff" layoutX="273.0" layoutY="180.0" mnemonicParsing="false" onAction="#staffLogin" prefHeight="46.0" prefWidth="105.0" text="STAFF" />
+      <Label alignment="CENTER" layoutX="78.0" layoutY="31.0" prefHeight="46.0" prefWidth="282.0" text="PUBLICATION  LISTING  SERVICE" textFill="#da0e0e">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

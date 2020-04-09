@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="533.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.UserDetailsControl">
+			
+   <children>
+      <Label alignment="CENTER" layoutX="34.0" layoutY="47.0" prefHeight="47.0" prefWidth="167.0" text="USER DETAILS" textFill="#f20c0c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="119.0" prefHeight="21.0" prefWidth="151.0" text="ID">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="173.0" text="USERNAME">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="myLogout" layoutX="344.0" layoutY="404.0" mnemonicParsing="false" onAction="#Logout" text="LOG OUT" />
+      <Label fx:id="myID" alignment="CENTER" layoutX="232.0" layoutY="119.0" prefHeight="27.0" prefWidth="224.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="51.0" layoutY="224.0" text="EMAIL">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="myUserUsername" alignment="CENTER" layoutX="232.0" layoutY="173.0" prefHeight="27.0" prefWidth="224.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="myUserEmail" alignment="CENTER" layoutX="232.0" layoutY="224.0" prefHeight="27.0" prefWidth="224.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="283.0" text="ADDRESS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="myUserAddress" alignment="CENTER" layoutX="232.0" layoutY="283.0" prefHeight="27.0" prefWidth="224.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="339.0" text="MOBILE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="myUserMobile" alignment="CENTER" layoutX="232.0" layoutY="339.0" prefHeight="27.0" prefWidth="224.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="myAccessLib" layoutX="102.0" layoutY="404.0" mnemonicParsing="false" onAction="#AccessLib" prefHeight="31.0" prefWidth="167.0" text="ACCESS LIBRARY" textFill="#dd074f" />
+      
+   </children>
+</AnchorPane>

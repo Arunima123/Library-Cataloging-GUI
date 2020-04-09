@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="447.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.AdminDetailsControl">
+			
+   <children>
+      <Label alignment="CENTER" layoutX="34.0" layoutY="47.0" prefHeight="47.0" prefWidth="167.0" text="ADMIN DETAILS" textFill="#f20c0c">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="146.0" prefHeight="21.0" prefWidth="151.0" text="ID">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="210.0" text="USERNAME">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="myLogout" layoutX="305.0" layoutY="365.0" mnemonicParsing="false" onAction="#Logout" text="LOG OUT" />
+      <Label fx:id="myID" layoutX="232.0" layoutY="146.0" prefHeight="27.0" prefWidth="151.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="51.0" layoutY="289.0" text="PASSWORD">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="myAdminUsername" layoutX="232.0" layoutY="210.0" prefHeight="27.0" prefWidth="151.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="myAdminPassword" layoutX="232.0" layoutY="286.0" prefHeight="27.0" prefWidth="151.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      
+   </children>
+</AnchorPane>

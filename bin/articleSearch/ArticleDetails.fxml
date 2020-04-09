@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="580.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="articleSearch.ArticleDetailsControl">
+   <children>
+      <Label layoutX="34.0" layoutY="45.0" text="Enter the Article details ( Whatever you know)" textFill="#ee0fc2">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="104.0" text="ARTICLE ID" textFill="#d32008" />
+      <Label layoutX="34.0" layoutY="211.0" text="ARTICLE TITLE" textFill="#de1d0b" />
+      <Label layoutX="34.0" layoutY="429.0" prefHeight="31.0" prefWidth="103.0" text="ARTICLE YEAR" textFill="#d00909" />
+      <Label layoutX="34.0" layoutY="322.0" text="ARTICLE PAGES" textFill="#da0707" />
+      <TextField fx:id="article_id" layoutX="34.0" layoutY="137.0" promptText="ID" />
+      <TextField fx:id="article_title" layoutX="34.0" layoutY="246.0" promptText="TITLE" />
+      <TextField fx:id="article_pages" layoutX="34.0" layoutY="360.0" promptText="PAGES" />
+      <TextField fx:id="article_year" layoutX="34.0" layoutY="471.0" promptText="YEAR" />
+      <Button fx:id="mySearchArticle" layoutX="323.0" layoutY="511.0" mnemonicParsing="false" onAction="#SearchArticle" prefHeight="31.0" prefWidth="99.0" text="SEARCH" />
+   </children>
+</AnchorPane>

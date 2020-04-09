@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="261.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="user.UserAccessControl">
+   <children>
+      <Button fx:id="mySignUp" layoutX="162.0" layoutY="115.0" mnemonicParsing="false" onAction="#SignUp" text="Sign Up" />
+      <Label layoutX="66.0" layoutY="53.0" text="USER LOGIN" textFill="#2a0de8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="190.0" text="Already have an account? " textFill="#db250b">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="mySignIn" layoutX="262.0" layoutY="187.0" mnemonicParsing="false" onAction="#SignIn" text="Sign In" />
+      <Label layoutX="69.0" layoutY="120.0" text="Welcome!" textFill="#f20aa4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

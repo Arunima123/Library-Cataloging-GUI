@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="150.0" prefWidth="311.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="feedback.FeedbackThanksControl">
+   <children>
+      <Label layoutX="16.0" layoutY="38.0" text="Thanks for giving your feedback!" textFill="#ee7903">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="myHome" layoutX="123.0" layoutY="86.0" mnemonicParsing="false" onAction="#goFrontPage" text="HOME" />
+   </children>
+</AnchorPane>
