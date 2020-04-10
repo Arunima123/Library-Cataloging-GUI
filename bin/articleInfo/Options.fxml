@@ -6,15 +6,34 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="452.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="staff.StaffAccessControl">
+
+<AnchorPane prefHeight="379.0" prefWidth="388.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+			fx:controller="articleInfo.OptionsControl">
    <children>
-      <Accordion layoutX="31.0" layoutY="14.0" />
-      <Button fx:id="myStaffLogin" layoutX="270.0" layoutY="357.0" mnemonicParsing="false" onAction="#StaffLogin" prefHeight="46.0" prefWidth="94.0" text="LOGIN" />
-      <Label alignment="CENTER" layoutX="33.0" layoutY="45.0" prefHeight="27.0" prefWidth="343.0" text="Get Information about Publlication List" textFill="#350af5">
+      <Label layoutX="104.0" layoutY="48.0" text="GET INFORMATION " textFill="#ed03f5">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="108.0" />
+      <Button layoutX="130.0" layoutY="115.0" mnemonicParsing="false" onAction="#ArticleInfo" text="About Article">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="116.0" layoutY="182.0" mnemonicParsing="false" onAction="#AllArticleInfo" text="List of all Articles">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="113.0" layoutY="245.0" mnemonicParsing="false" onAction="#AllJournalInfo" text="List of all Journals">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="115.0" layoutY="305.0" mnemonicParsing="false" onAction="#AllAuthorInfo" text="List of all Authors">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -26,9 +26,12 @@ public class DBconnect {
 	private static final String SELECT_QUERY6 = "SELECT count(*) as count FROM userr WHERE user_name = ? and user_id = ?";
 	private static final String SELECT_QUERY7 = "SELECT user_mobile from user_mobile where user_id=?";
 	private static final String SELECT_QUERY8 = "SELECT * from userr where user_name =? and user_id=? ";
-	//private static final String SELECT_QUERY9 = "SELECT * from articles where artcle_id =?,article_title=?,article_pages=? and article_year=? ";
-	//private static final String SELECT_QUERY10 = "SELECT count(*) as count FROM articles WHERE article_id =? and article_title=? and article_pages=? and article_year=?";
-
+	private static final String SELECT_QUERY9 = "SELECT count(*) as count from articles where article_id=?";
+	private static final String SELECT_QUERY10 = "SELECT * from journals join articles on journal_article_id=article_id join authors on article_author_id=author_id join institution on author_institution_id=institution_id where article_id=?";
+	private static final String SELECT_QUERY11 = "SELECT * from articles";
+	private static final String SELECT_QUERY12 = "SELECT * from authors,institution where author_institution_id=institution_id";
+	private static final String SELECT_QUERY13 = "SELECT * from journals";
+	
 
 
 	public boolean validate(String name, String password) throws SQLException {
@@ -567,6 +570,190 @@ public class DBconnect {
 				resultArray[i][j] = result.get(i).get(j);
 		return resultArray;
 	}
+	
+	public boolean validateAccess(String id) throws SQLException {
+
+		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY9)) {
+			preparedStatement.setInt(1, Integer.parseInt(id));
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				String count = resultSet.getString("count");
+				if (Integer.parseInt(count) == 1) {
+					return true;
+				}
+			}
+
+			connection.close();
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		return false;
+	}
+	
+   public String[][] showArticleInfo(String id) {
+		
+		List<List<String>> result = new ArrayList<List<String>>();
+		
+		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY10)) {
+		
+			preparedStatement.setInt(1, Integer.parseInt(id));
+
+		     ResultSet resultSet = preparedStatement.executeQuery();
+			 while(resultSet.next()) {
+				 	List<String> resultEntity = new ArrayList<String>();
+				 	resultEntity.add(resultSet.getString("article_id"));
+				 	resultEntity.add(resultSet.getString("article_title"));
+				 	resultEntity.add(resultSet.getString("article_pages"));
+				 	resultEntity.add(resultSet.getString("article_year"));
+				 	resultEntity.add(resultSet.getString("journal_title"));
+				 	resultEntity.add(resultSet.getString("journal_pages"));
+				 	resultEntity.add(resultSet.getString("journal_year"));
+				 	resultEntity.add(resultSet.getString("publisher"));
+					resultEntity.add(resultSet.getString("author_name"));
+				 	resultEntity.add(resultSet.getString("author_email"));
+				 	resultEntity.add(resultSet.getString("author_department"));
+				 	resultEntity.add(resultSet.getString("author_addresss"));
+				 	resultEntity.add(resultSet.getString("institution_name"));
+				 	resultEntity.add(resultSet.getString("state"));
+				 	resultEntity.add(resultSet.getString("city"));
+				 	resultEntity.add(resultSet.getString("street"));
+				 	
+				 	result.add(resultEntity);
+			}
+		
+			connection.close();
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		if(result.size()==0)
+			return new String[][] {{"Empty"}};
+		int row = result.size();
+		int col = result.get(0).size();
+		String[][] resultArray = new String[result.size()][result.get(0).size()];
+		for(int i=0; i<row; i++)
+			for(int j=0; j<col; j++)
+				resultArray[i][j] = result.get(i).get(j);
+		return resultArray;
+	}
+
+public static String[][] showAllArticleInfo() {
+	
+	List<List<String>> result = new ArrayList<List<String>>();
+	
+	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY11)) {
+	
+	     ResultSet resultSet = preparedStatement.executeQuery();
+		 while(resultSet.next()) {
+			 	List<String> resultEntity = new ArrayList<String>();
+			 	resultEntity.add(resultSet.getString("article_id"));
+			 	resultEntity.add(resultSet.getString("article_title"));
+			 	resultEntity.add(resultSet.getString("article_pages"));
+			 	resultEntity.add(resultSet.getString("article_year"));
+			 	result.add(resultEntity);
+		}
+	
+		connection.close();
+
+	} catch (SQLException e) {
+		printSQLException(e);
+	}
+	if(result.size()==0)
+		return new String[][] {{"Empty"}};
+	int row = result.size();
+	int col = result.get(0).size();
+	String[][] resultArray = new String[result.size()][result.get(0).size()];
+	for(int i=0; i<row; i++)
+		for(int j=0; j<col; j++)
+			resultArray[i][j] = result.get(i).get(j);
+	return resultArray;
+}
+
+
+public static String[][] showAllJournalInfo() {
+	
+	List<List<String>> result = new ArrayList<List<String>>();
+	
+	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY13)) {
+		
+	     ResultSet resultSet = preparedStatement.executeQuery();
+		 while(resultSet.next()) {
+			 	List<String> resultEntity = new ArrayList<String>();
+			 	resultEntity.add(resultSet.getString("journal_id"));
+			 	resultEntity.add(resultSet.getString("journal_title"));
+			 	resultEntity.add(resultSet.getString("journal_pages"));
+			 	resultEntity.add(resultSet.getString("journal_year"));
+			 	resultEntity.add(resultSet.getString("publisher"));
+			 	result.add(resultEntity);
+		}
+	
+		connection.close();
+
+	} catch (SQLException e) {
+		printSQLException(e);
+	}
+	if(result.size()==0)
+		return new String[][] {{"Empty"}};
+	int row = result.size();
+	int col = result.get(0).size();
+	String[][] resultArray = new String[result.size()][result.get(0).size()];
+	for(int i=0; i<row; i++)
+		for(int j=0; j<col; j++)
+			resultArray[i][j] = result.get(i).get(j);
+	return resultArray;
+}
+
+
+public static String[][] showAllAuthorInfo() {
+	
+	List<List<String>> result = new ArrayList<List<String>>();
+	
+	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY12)) {
+		
+	     ResultSet resultSet = preparedStatement.executeQuery();
+		 while(resultSet.next()) {
+			 	List<String> resultEntity = new ArrayList<String>();
+			 	resultEntity.add(resultSet.getString("author_id"));
+			 	resultEntity.add(resultSet.getString("author_name"));
+			 	resultEntity.add(resultSet.getString("author_email"));
+			 	resultEntity.add(resultSet.getString("author_department"));
+			 	resultEntity.add(resultSet.getString("author_addresss"));
+			 	resultEntity.add(resultSet.getString("institution_id"));
+			 	resultEntity.add(resultSet.getString("institution_name"));
+			 	resultEntity.add(resultSet.getString("state"));
+			 	resultEntity.add(resultSet.getString("city"));
+			 	resultEntity.add(resultSet.getString("street"));
+			 	result.add(resultEntity);
+		}
+	
+		connection.close();
+
+	} catch (SQLException e) {
+		printSQLException(e);
+	}
+	if(result.size()==0)
+		return new String[][] {{"Empty"}};
+	int row = result.size();
+	int col = result.get(0).size();
+	String[][] resultArray = new String[result.size()][result.get(0).size()];
+	for(int i=0; i<row; i++)
+		for(int j=0; j<col; j++)
+			resultArray[i][j] = result.get(i).get(j);
+	return resultArray;
+}
+
 	
 	
 	public static void printSQLException(SQLException ex) {

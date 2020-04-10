@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="372.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="articleInfo.AllJournalControl">
+   <children>
+      <Label layoutX="227.0" layoutY="38.0" text="LIST OF ALL JOURNALS" textFill="#d00d45">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="myList1" alignment="TOP_LEFT" layoutX="597.0" layoutY="123.0" prefHeight="147.0" prefWidth="62.0" />
+      <Button layoutX="247.0" layoutY="313.0" mnemonicParsing="false" onAction="#MainFunctions" prefHeight="31.0" prefWidth="166.0" text="MAIN FUNCTIONS" />
+      <TableView fx:id="tableView" layoutX="70.0" layoutY="81.0" prefHeight="211.0" prefWidth="520.0">
+      </TableView>
+   </children>
+</AnchorPane>

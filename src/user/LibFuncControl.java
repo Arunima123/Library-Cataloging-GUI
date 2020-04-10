@@ -48,4 +48,18 @@ public class LibFuncControl implements Initializable {
 			        e.printStackTrace();
 			    }
 	      }
+  
+  public void Logout(ActionEvent event) {
+	   
+	  
+		try {	   Parent root = FXMLLoader.load(getClass().getResource("/FrontPage/FrontPage.fxml"));/* Exception */
+			   Scene scene = new Scene(root);
+			   Stage stage = new Stage();
+			   stage.setScene(scene);
+			   stage.show();
+	   }  
+			   catch(Exception e) {
+			        e.printStackTrace();
+			    }
+	      }
 }

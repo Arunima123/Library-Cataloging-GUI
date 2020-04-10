@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="230.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="articleInfo.GetInfoControl">
+   <children>
+      <Accordion layoutX="31.0" layoutY="14.0" />
+      <Button fx:id="article_access" layoutX="277.0" layoutY="156.0" mnemonicParsing="false" onAction="#OptionsAccess" prefHeight="46.0" prefWidth="94.0" text="ACCESS" />
+      <TextField fx:id="article_id" layoutX="64.0" layoutY="95.0" prefHeight="40.0" prefWidth="213.0" promptText="ID" />
+      <Label layoutX="64.0" layoutY="49.0" text="Enter Article ID" textFill="#d3058b">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

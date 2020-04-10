@@ -9,13 +9,15 @@
 <AnchorPane prefHeight="316.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.UserSignInControl">
    <children>
       <Accordion layoutX="31.0" layoutY="14.0" />
-      <TextField fx:id="user_name" layoutX="64.0" layoutY="105.0" prefHeight="40.0" prefWidth="213.0" promptText="Username" />
-      <Button fx:id="myUserLogin" layoutX="277.0" layoutY="235.0" mnemonicParsing="false" onAction="#UserLogin" prefHeight="46.0" prefWidth="94.0" text="LOGIN" />
-      <Label alignment="CENTER" layoutX="150.0" layoutY="54.0" prefHeight="21.0" prefWidth="109.0" text="USER LOGIN" textFill="#350af5">
+      <TextField fx:id="user_name" layoutX="64.0" layoutY="110.0" prefHeight="40.0" prefWidth="213.0" promptText="Username" />
+      <Button fx:id="myUserLogin" layoutX="277.0" layoutY="256.0" mnemonicParsing="false" onAction="#UserLogin" prefHeight="46.0" prefWidth="94.0" text="LOGIN" />
+      <Label alignment="CENTER" layoutX="150.0" layoutY="32.0" prefHeight="21.0" prefWidth="109.0" text="USER LOGIN" textFill="#350af5">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="user_id" layoutX="64.0" layoutY="176.0" prefHeight="40.0" prefWidth="213.0" promptText="ID" />
+      <TextField fx:id="user_id" layoutX="64.0" layoutY="201.0" prefHeight="40.0" prefWidth="213.0" promptText="ID" />
+      <Label layoutX="64.0" layoutY="76.0" text="USERNAME" textFill="#ee0b88" />
+      <Label layoutX="64.0" layoutY="167.0" text="USER ID" textFill="#f5058d" />
    </children>
 </AnchorPane>
