@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import application.DBconnect;
+import constants.Constants;
 //import constants.Constants;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,13 +37,12 @@ public class UpdateRecordControl implements Initializable {
 	   private TextField myId;
 	   
 	   @FXML
-	   private TextField myfield;
-	
-	   @FXML
 	   private TextField myValue;
 	   
 	   @FXML
 	   private Button myUpdate;
+	   
+	   int count;
 	   
 	   
 	   @Override
@@ -52,7 +52,37 @@ public class UpdateRecordControl implements Initializable {
 	      
 	   }
 	   
-	   
+	   public void UpdateTitle(ActionEvent event) throws SQLException {
+		   
+		   try {
+			  
+			   Constants.count=1;
+			   
+		   }catch(Exception e) {
+		        e.printStackTrace();
+		    }
+	   }
+	   public void UpdatePages(ActionEvent event) throws SQLException {
+		   
+		   try {
+			  
+			   Constants.count=2;
+			   
+		   }catch(Exception e) {
+		        e.printStackTrace();
+		    }
+	   }
+	   public void UpdateYear(ActionEvent event) throws SQLException {
+		   
+		   try {
+			  
+			   Constants.count=3;
+			   
+		   }catch(Exception e) {
+		        e.printStackTrace();
+		    }
+	   }
+
 	   public void update(ActionEvent event) throws SQLException {
 		
 		   Window owner = myUpdate.getScene().getWindow();
@@ -60,12 +90,6 @@ public class UpdateRecordControl implements Initializable {
 	        if (myId.getText().isEmpty()) {
 	            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
 	                "Please enter Article ID");
-	            return;
-	        }
-	        
-	        if (myfield.getText().isEmpty()) {
-	            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-	                "Please enter the Field");
 	            return;
 	        }
 	  
@@ -77,7 +101,6 @@ public class UpdateRecordControl implements Initializable {
 	  
 	  
 			String id= myId.getText().toString();
-			String field= myfield.getText().toString();
 			String val= myValue.getText().toString();
 			  
 			  
@@ -88,7 +111,13 @@ public class UpdateRecordControl implements Initializable {
 	        } else {
 	           try {	  
 	            
-	           DBconnect.UpdateRecord(id,field,val);
+	        	   if(Constants.count==1)
+	        		   DBconnect.UpdateRecord1(id,val);
+	        	   if(Constants.count==2)
+		        	   DBconnect.UpdateRecord2(id,val);
+	        	   if(Constants.count==3)
+		        	   DBconnect.UpdateRecord3(id,val);
+		           
 	           
 	               Parent root = FXMLLoader.load(getClass().getResource("/admin/UpdateSuccessful.fxml"));/* Exception */
 		 		   Scene scene = new Scene(root);

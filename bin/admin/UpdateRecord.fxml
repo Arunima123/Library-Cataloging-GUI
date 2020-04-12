@@ -12,7 +12,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="152.0" text="Enter the field that needs to be updated" textFill="#d80aeb">
+      <Label layoutX="32.0" layoutY="152.0" text="Click the field that needs to be updated" textFill="#d80aeb">
          <font>
             <Font size="18.0" />
          </font>
@@ -23,8 +23,10 @@
          </font>
       </Label>
       <TextField fx:id="myId" layoutX="32.0" layoutY="79.0" promptText="ID" />
-      <TextField fx:id="myfield" layoutX="32.0" layoutY="188.0" promptText="FIELD" />
       <TextField fx:id="myValue" layoutX="32.0" layoutY="301.0" promptText="VALUE" />
       <Button fx:id="myUpdate" layoutX="337.0" layoutY="350.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="89.0" text="UPDATE" />
+      <Button layoutX="32.0" layoutY="195.0" mnemonicParsing="false" onAction="#UpdateTitle" text="Title" />
+      <Button layoutX="115.0" layoutY="195.0" mnemonicParsing="false" onAction="#UpdatePages" text="Number of Pages " />
+      <Button layoutX="286.0" layoutY="195.0" mnemonicParsing="false" onAction="#UpdateYear" text="Year of Publishing" />
    </children>
 </AnchorPane>

@@ -17,4 +17,5 @@ public class Constants {
 	public static String count1;
 	public static String count2;
 	public static String[][] showArticleList;
+	public static int count;
 }

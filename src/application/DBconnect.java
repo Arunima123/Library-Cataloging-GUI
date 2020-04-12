@@ -33,7 +33,9 @@ public class DBconnect {
 	private static final String SELECT_QUERY13 = "SELECT * from journals";
 	private static final String SELECT_QUERY14 = "SELECT count(*) as count from articles where article_id=?";
 	private static final String SELECT_QUERY15 = "DELETE from articles where article_id=?";
-	private static final String SELECT_QUERY16 = "UPDATE articles set ?=? where article_id=?";
+	private static final String SELECT_QUERY16 = "UPDATE articles set article_title=? where article_id=?";
+	private static final String SELECT_QUERY17 = "UPDATE articles set article_pages=? where article_id=?";
+	private static final String SELECT_QUERY18 = "UPDATE articles set article_year=? where article_id=?";
 
 
 	public boolean validate(String name, String password) throws SQLException {
@@ -797,14 +799,49 @@ public static String[][] showAllAuthorInfo() {
   
     }
         
-        public void UpdateRecord(String id,String field,String value) throws SQLException {
+        public void UpdateRecord1(String id,String value) throws SQLException {
 
         	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
 
         			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY16)) {
-        		preparedStatement.setString(1,field);
-        		preparedStatement.setString(2,value);
-        		preparedStatement.setInt(3, Integer.parseInt(id));
+        		preparedStatement.setString(1,value);
+        		preparedStatement.setInt(2, Integer.parseInt(id));
+
+        		preparedStatement.executeUpdate();
+
+        		connection.commit();
+        		connection.close();
+        	} catch (SQLException e) {
+        		printSQLException(e);
+        	}
+      
+        }
+        
+        public void UpdateRecord2(String id,String value) throws SQLException {
+
+        	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+        			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY17)) {
+        		preparedStatement.setString(1,value);
+        		preparedStatement.setInt(2, Integer.parseInt(id));
+
+        		preparedStatement.executeUpdate();
+
+        		connection.commit();
+        		connection.close();
+        	} catch (SQLException e) {
+        		printSQLException(e);
+        	}
+      
+        }
+        
+        public void UpdateRecord3(String id,String value) throws SQLException {
+
+        	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+        			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY18)) {
+        		preparedStatement.setString(1,value);
+        		preparedStatement.setInt(2, Integer.parseInt(id));
 
         		preparedStatement.executeUpdate();
 
