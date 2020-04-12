@@ -14,12 +14,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="119.0" prefHeight="21.0" prefWidth="151.0" text="ID">
+      <Label layoutX="51.0" layoutY="119.0" prefHeight="21.0" prefWidth="151.0" text="ID" textFill="#2a04e4">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="173.0" text="USERNAME">
+      <Label layoutX="51.0" layoutY="173.0" text="USERNAME" textFill="#3a05da">
          <font>
             <Font size="18.0" />
          </font>
@@ -29,7 +29,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="51.0" layoutY="224.0" text="EMAIL">
+      <Label layoutX="51.0" layoutY="224.0" text="EMAIL" textFill="#4a05eb">
          <font>
             <Font size="18.0" />
          </font>
@@ -44,7 +44,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="283.0" text="ADDRESS">
+      <Label layoutX="51.0" layoutY="283.0" text="ADDRESS" textFill="#3307e1">
          <font>
             <Font size="18.0" />
          </font>
@@ -54,7 +54,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="339.0" text="MOBILE">
+      <Label layoutX="51.0" layoutY="339.0" text="MOBILE" textFill="#3c07da">
          <font>
             <Font size="18.0" />
          </font>

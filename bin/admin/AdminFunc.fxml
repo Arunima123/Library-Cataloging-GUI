@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane onDragDetected="#add" prefHeight="357.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.AdminFuncControl">
+   <children>
+      <Label layoutX="32.0" layoutY="44.0" prefHeight="25.0" prefWidth="296.0" text="DIFFERENT ADMIN FUNCTIONS" textFill="#eb6e01">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="116.0" layoutY="105.0" mnemonicParsing="false" onAction="#add" text="Add a record" textFill="#c60606">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="104.0" layoutY="168.0" mnemonicParsing="false" onAction="#update" text="Update a record" textFill="#bc0505">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="107.0" layoutY="234.0" mnemonicParsing="false" onAction="#delete" text="Delete a record" textFill="#bc0606">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="140.0" layoutY="298.0" mnemonicParsing="false" onAction="#Logout" text="LOGOUT" />
+   </children>
+</AnchorPane>

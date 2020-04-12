@@ -31,7 +31,9 @@ public class DBconnect {
 	private static final String SELECT_QUERY11 = "SELECT * from articles";
 	private static final String SELECT_QUERY12 = "SELECT * from authors,institution where author_institution_id=institution_id";
 	private static final String SELECT_QUERY13 = "SELECT * from journals";
-	
+	private static final String SELECT_QUERY14 = "SELECT count(*) as count from articles where article_id=?";
+	private static final String SELECT_QUERY15 = "DELETE from articles where article_id=?";
+	private static final String SELECT_QUERY16 = "UPDATE articles set ?=? where article_id=?";
 
 
 	public boolean validate(String name, String password) throws SQLException {
@@ -754,7 +756,154 @@ public static String[][] showAllAuthorInfo() {
 	return resultArray;
 }
 
-	
+    public boolean validateRec(String id) throws SQLException {
+
+	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY14)) {
+		preparedStatement.setInt(1, Integer.parseInt(id));
+
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		if (resultSet.next()) {
+			String count = resultSet.getString("count");
+			//System.out.println(count);
+			if (Integer.parseInt(count) == 1) {
+				return true;
+			}
+		}
+
+		connection.close();
+	} catch (SQLException e) {
+		printSQLException(e);
+	}
+	return false;
+}
+    
+    public void delRecord(String id) throws SQLException {
+
+    	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+    			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY15)) {
+    		preparedStatement.setInt(1, Integer.parseInt(id));
+
+    		preparedStatement.executeUpdate();
+
+    		connection.commit();
+    		connection.close();
+    	} catch (SQLException e) {
+    		printSQLException(e);
+    	}
+  
+    }
+        
+        public void UpdateRecord(String id,String field,String value) throws SQLException {
+
+        	try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+        			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY16)) {
+        		preparedStatement.setString(1,field);
+        		preparedStatement.setString(2,value);
+        		preparedStatement.setInt(3, Integer.parseInt(id));
+
+        		preparedStatement.executeUpdate();
+
+        		connection.commit();
+        		connection.close();
+        	} catch (SQLException e) {
+        		printSQLException(e);
+        	}
+      
+        }
+        
+        public void RecInDB1(String title1,String id1,String id2,String id3) throws SQLException {
+
+    		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+    				PreparedStatement stmt = connection
+    						.prepareStatement("insert into articles(article_title,article_id,article_journal_id,article_author_id) values(?,?,?,?)")) {
+    			
+    			stmt.setString(1, title1);
+    			stmt.setString(2, id1);
+    			stmt.setString(3, id2);
+    			stmt.setString(4, id3);
+
+    			stmt.executeUpdate();
+
+    			connection.commit();
+    			connection.close();
+
+    		} catch (SQLException e) {
+    			printSQLException(e);
+    		}
+
+    	}
+    	
+        public void RecInDB2(String title2,String id2) throws SQLException {
+
+    		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+    				PreparedStatement stmt = connection
+    						.prepareStatement("insert into journals(journal_title,journal_id) values(?,?)")) {
+    			
+    			stmt.setString(1, title2);
+    			stmt.setString(2, id2);
+
+    			stmt.executeUpdate();
+
+    			connection.commit();
+    			connection.close();
+
+    		} catch (SQLException e) {
+    			printSQLException(e);
+    		}
+
+    	}
+    	
+        
+        public void RecInDB3(String name,String id3,String id4) throws SQLException {
+
+    		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+    				PreparedStatement stmt = connection
+    						.prepareStatement("insert into authors(author_name,author_id,author_institution_id) values(?,?,?)")) {
+    			
+    			stmt.setString(1, name);
+    			stmt.setString(2, id3);
+    			stmt.setString(3, id4);
+
+    			stmt.executeUpdate();
+
+    			connection.commit();
+    			connection.close();
+
+    		} catch (SQLException e) {
+    			printSQLException(e);
+    		}
+
+    	}
+    	
+        
+        public void RecInDB4(String id4) throws SQLException {
+
+    		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+    				PreparedStatement stmt = connection
+    						.prepareStatement("insert into institution(institution_id) values(?)")) {
+    			
+    			stmt.setString(1, id4);
+
+    			stmt.executeUpdate();
+
+    			connection.commit();
+    			connection.close();
+
+    		} catch (SQLException e) {
+    			printSQLException(e);
+    		}
+
+    	}
+    	
 	
 	public static void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {

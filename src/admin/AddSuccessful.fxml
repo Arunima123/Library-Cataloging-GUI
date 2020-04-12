@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="225.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.SuccessfulControl">
+   <children>
+      <Label layoutX="104.0" layoutY="60.0" text="RECORD ADDED!" textFill="#f500f0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="99.0" layoutY="122.0" mnemonicParsing="false" onAction="#admin_func" text="ADMIN FUNCTIONS" />
+   </children>
+</AnchorPane>

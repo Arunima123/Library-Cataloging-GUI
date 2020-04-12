@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="613.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.AddRecordControl">
+   <children>
+      <Label layoutX="42.0" layoutY="46.0" text="Enter all details" textFill="#eb0ec6">
+         <font>
+            <Font name="Comic Sans MS" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="118.0" text="ARTICLE TITLE" />
+      <Label layoutX="42.0" layoutY="186.0" text="ARTICLE ID" />
+      <Label layoutX="42.0" layoutY="249.0" text="AUTHOR NAME" />
+      <Label layoutX="42.0" layoutY="315.0" text="AUTHOR ID" />
+      <Label layoutX="42.0" layoutY="381.0" text="JOURNAL TITLE" />
+      <Label layoutX="42.0" layoutY="447.0" text="JOURNAL ID" />
+      <Button fx:id="add_record" layoutX="302.0" layoutY="562.0" mnemonicParsing="false" onAction="#AddRecord" prefHeight="31.0" prefWidth="74.0" text="ADD" />
+      <TextField fx:id="article_title" layoutX="189.0" layoutY="113.0" />
+      <TextField fx:id="article_id" layoutX="189.0" layoutY="181.0" />
+      <TextField fx:id="author_name" layoutX="189.0" layoutY="244.0" />
+      <TextField fx:id="author_id" layoutX="189.0" layoutY="310.0" />
+      <TextField fx:id="journal_title" layoutX="189.0" layoutY="376.0" />
+      <TextField fx:id="journal_id" layoutX="189.0" layoutY="442.0" />
+      <Label layoutX="40.0" layoutY="513.0" text="INSTITUTION ID" />
+      <TextField fx:id="institution_id" layoutX="189.0" layoutY="508.0" />
+   </children>
+</AnchorPane>

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="447.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.AdminDetailsControl">
+<AnchorPane onDragDetected="#showFunc" prefHeight="447.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.AdminDetailsControl">
 			
    <children>
       <Label alignment="CENTER" layoutX="34.0" layoutY="47.0" prefHeight="47.0" prefWidth="167.0" text="ADMIN DETAILS" textFill="#f20c0c">
@@ -14,12 +14,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="146.0" prefHeight="21.0" prefWidth="151.0" text="ID">
+      <Label layoutX="50.0" layoutY="146.0" prefHeight="21.0" prefWidth="151.0" text="ID" textFill="#3b03e4">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="51.0" layoutY="210.0" text="USERNAME">
+      <Label layoutX="51.0" layoutY="210.0" text="USERNAME" textFill="#2a05e1">
          <font>
             <Font size="18.0" />
          </font>
@@ -29,7 +29,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label layoutX="51.0" layoutY="289.0" text="PASSWORD">
+      <Label layoutX="51.0" layoutY="289.0" text="PASSWORD" textFill="#3b06da">
          <font>
             <Font size="18.0" />
          </font>
@@ -44,6 +44,11 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Button layoutX="51.0" layoutY="365.0" mnemonicParsing="false" onAction="#showFunc" prefHeight="39.0" prefWidth="167.0" text="Admin Functions " textFill="#eb0779">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
       
    </children>
 </AnchorPane>

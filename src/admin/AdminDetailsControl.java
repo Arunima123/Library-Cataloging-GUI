@@ -50,19 +50,32 @@ public class AdminDetailsControl implements Initializable {
 		   myAdminPassword.setText(Constants.password);
 	      
 	   }
-	   
-	   public void Logout(ActionEvent event) throws SQLException {
-		
-		         try {	   Parent root = FXMLLoader.load(getClass().getResource("/FrontPage/FrontPage.fxml"));/* Exception */
-		 		   Scene scene = new Scene(root);
-		 		   Stage stage = new Stage();
-		 		   stage.setScene(scene);
-		 		   stage.show();
-		        }  
-		 		   catch(Exception e) {
-		 		        e.printStackTrace();
-		 		    }
-       }
 	  
+	   public void Logout(ActionEvent event) throws SQLException {
+			
+	         try {	   Parent root = FXMLLoader.load(getClass().getResource("/FrontPage/FrontPage.fxml"));/* Exception */
+	 		   Scene scene = new Scene(root);
+	 		   Stage stage = new Stage();
+	 		   stage.setScene(scene);
+	 		   stage.show();
+	        }  
+	 		   catch(Exception e) {
+	 		        e.printStackTrace();
+	 		    }
+ }
+	  
+	   public void showFunc(ActionEvent event) throws SQLException {
+			
+	         try {	   Parent root = FXMLLoader.load(getClass().getResource("/admin/AdminFunc.fxml"));/* Exception */
+	 		   Scene scene = new Scene(root);
+	 		   Stage stage = new Stage();
+	 		   stage.setScene(scene);
+	 		   stage.show();
+	        }  
+	 		   catch(Exception e) {
+	 		        e.printStackTrace();
+	 		    }
+ }
+
 		 
 }
