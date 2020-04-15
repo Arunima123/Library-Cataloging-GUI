@@ -1,0 +1,211 @@
+TABLES
+
+1)
+create table admin(
+admin_id number(5) primary key,
+admin_name varchar(20) not null,
+admin_password number(6) not null);
+
+2)
+create table login(
+login_id number(5) primary key,
+login_username varchar(20) not null,
+login_password number(6) not null,
+login_admin_id number(5));
+
+3)
+create table userr(
+user_id number(5) primary key,
+user_name varchar(20) not null,
+user_email varchar(40),
+user_address varchar(50));
+
+4)
+create table staff(
+staff_id number(5) primary key,
+staff_name varchar(20) not null,
+staff_email varchar(40),
+staff_designation varchar(50) not null,
+staff_addresss varchar(50));
+
+5)
+create table user_mobile(
+user_id number(5),
+user_mobile number(10));
+
+
+6)
+create table staff_mobile(
+staff_id number(5),
+staff_mobile number(10));
+
+7)
+create table articles(
+article_id number(5) primary key,
+article_title varchar(20) not null,
+article_author_id number(5),
+article_journal_id number(5),
+article_pages number(5),
+article_year number(4));
+
+8)
+create table authors(
+author_id number(5) primary key,
+author_name varchar(20) not null,
+author_email varchar(40),
+author_department varchar(50),
+author_addresss varchar(50),
+author_institution_id number(5));
+
+9)
+create table institution(
+institution_id number(5) primary key,
+institution_name varchar(50),
+state varchar(20),
+city varchar(20),
+street varchar(20));
+
+10)
+create table journals(
+journal_id number(5) primary key,
+journal_title varchar(20) not null,
+journal_pages number(5),
+journal_year number(4),
+publisher varchar(20));
+
+11)
+create table feedback(
+user_id number(5),
+feedback_title varchar(20),
+feedback_description varchar(40));
+
+drop table feedback;
+drop table admin;
+drop table login;
+drop table userr;
+drop table staff;
+drop table user_mobile;
+drop table staff_mobile;
+drop table articles;
+drop table authors;
+drop table institution;
+drop table journals;
+
+
+alter table user_mobile add constraint f_key foreign key(user_id) references userr(user_id) on delete cascade;
+alter table login add constraint f1_key foreign key(login_admin_id) references admin(admin_id) on delete cascade;
+alter table staff_mobile add constraint f2_key foreign key(staff_id) references staff(staff_id) on delete cascade;
+alter table articles add constraint f3_key foreign key(article_author_id) references authors(author_id);
+alter table authors add constraint f4_key foreign key(author_institution_id) references institution(institution_id);
+alter table articles add constraint f5_key foreign key(article_journal_id) references journals(journal_id);
+alter table feedback add constraint f6_key foreign key(user_id) references userr(user_id) on delete cascade;
+
+
+SIMPLE QUERIES
+1)
+List all institutions located in Uttar Pradesh
+
+select institution_name from institution where state='UP';
+
+2)
+List all staff names with length of their names
+
+select staff_name,length(staff_name) as length from staff;
+
+3)
+List the login ID of all admins with admin_password='123456'
+
+select admin_name,login_id from login,admin where login_id=login_admin_id and admin_password='123456';
+
+INTERMEDIATE QUERIES
+1)
+Find the names of the journals that have the highest average number of pages in a year
+
+select journal_title from journals where journal_pages>all(select avg(journal_pages) from journals group by journal_year);
+
+2)
+Find the names of all users who do not live in 'ggg'
+
+select user_name from userr where user_address in ((select user_address from userr) minus (select user_address from userr where user_addresss='ggg'));
+
+3)
+Find all articles in year 1998 of pages more than 10 and in year 1990 of pages less than 8
+
+(select article_title from articles where article_year=1998 and article_pages>10) union (select article_title from articles where article_year=1990 and article_pages<8);
+
+COMPLEX QUERIES
+1)
+Find the maximum total number of pages in journals across the publishers
+
+select max(s) from (select sum(journal_pages) as s from journals group by publisher);
+
+2)
+Find the average number of pages in journals across publishers where the average salary is greater than 700
+
+with avg_page(value) as ( select avg(journal_pages) from journals group by publisher) select value from avg_page where value>700; 
+
+3)
+Display the details of articles sorting the number of pages in decreasing order
+
+select * from articles order by article_pages desc;
+
+4)
+Increase pages of the journal by 2%  if pages are more than 500 else by 4%
+
+update journals set journal_pages=(case when journal_pages >500 then journal_pages * 1.02 else journal_pages * 1.04 end);
+ 
+INSERT QUERIES 
+
+insert into institution values(987,'MIT','UP','Lucknow',23);
+insert into institution values(567,'VIT','UP','Kanpur',19);
+insert into institution values(431,'BITS','Delhi','abc',5);
+insert into institution values(216,'IIT','Mumbai','Thane',6);
+
+insert into authors values(123,'Arun','sunflower123@gmail.com','publicity','zzz',987);
+insert into authors values(234,'Riya','planet122@gmail.com','social media','yyy',567);
+insert into authors values(345,'Arun','rose123@gmail.com','HR','xxx',431);
+insert into authors values(456,'Simran','mars122@gmail.com','PR','www',216);
+
+insert into articles values(1123,'Tree',123,1111,12,1990);
+insert into articles values(1122,'Tree Sequel',123,8888,12,1990);
+insert into articles values(2211,'Ocean',234,9999,6,1998);
+insert into articles values(3344,'Mountain',345,2222,24,1990);
+insert into articles values(4433,'Sunlight',456,6666,36,1998);
+
+insert into journals values(8888,'Darkness',2000,2003,'ssss');
+insert into journals values(1111,'Forest',1000,1987,'qqqq');
+insert into journals values(9999,'Water',200,2000,'wwww');
+insert into journals values(2222,'Land',1800,1987,'qqqq');
+insert into journals values(6666,'Light',800,2000,'rrrr');
+
+insert into admin values(987,'Arunima',123456);
+insert into admin values(876,'Ayushi',345678);
+
+insert into login values(246,'Arunima',123456,987);
+insert into login values(876,'Ayushi',345678,876);
+
+insert into userr values(2223,'April','22abc@gmail.com','fff');
+insert into userr values(3334,'May','33dbc@gmail.com','ggg');
+insert into userr values(4445,'Rose','44aec@gmail.com','hhh');
+insert into userr values(5556,'Maeve','55abf@gmail.com','jjj');
+
+insert into feedback values(2223,'Efficient','Efficiency is on point');
+insert into feedback values(4445,'Easy','Easy to use and handles');
+
+insert into user_mobile values(4445,9753214350);
+insert into user_mobile values(3334,8451274310);
+
+insert into staff values(3332,'June','77abc@gmail.com','Receptionist','ttt');
+insert into staff values(4443,'Monica','88dbc@gmail.com','Book-Keeper','yyy');
+insert into staff values(5554,'Liz','11aec@gmail.com','Sweeper','uuu');
+insert into staff values(6665,'Meera','99abf@gmail.com','Book-Keeper','ppp');
+
+insert into staff_mobile values(5554,7753314448);
+insert into staff_mobile values(6665,9953414888);
+
+//Some queries//
+select i.institution_name, a.author_name, A.article_title from institution i inner join authors a on i.institution_id=a.author_institution_id inner join articles A on a.author_id=A.article_author_id;
+
+a.author_name, A.article_title from institution i inner join authors a on i.institution_id=a.author_institution_id inner join articles A on a.author_id=A.article_author_id where A.article_id=1122;
+
+delete from articles where article_id=1122;

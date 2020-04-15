@@ -119,7 +119,7 @@ public class UserSignUpControl implements Initializable {
 		            return;
 		           }
 		    	
-		    	String emailRegex2 = "^((\\+){1}91){1}[1-9]{1}[0-9]{9}$"; 
+		    	String emailRegex2 = "(0/91)?[7-9][0-9]{9}"; 
 		                      
 			    Pattern pat2 = Pattern.compile(emailRegex2);  
 			    Matcher matcher2 = pat2.matcher((CharSequence) mob);
@@ -131,11 +131,12 @@ public class UserSignUpControl implements Initializable {
 			       }
 		    		
 			
-			DBconnect DBconnect = new DBconnect();
+			    DBconnect DBconnect = new DBconnect();
 	      	           try {	  
 	            
 	           DBconnect.UserInDB(username,id,email,add);
 	           DBconnect.UserInDB2(id,mob);
+	           DBconnect.UserInFB(id);
 	           
 	           Parent root = FXMLLoader.load(getClass().getResource("/user/SignUpThanks.fxml"));
 	           Scene scene = new Scene(root);

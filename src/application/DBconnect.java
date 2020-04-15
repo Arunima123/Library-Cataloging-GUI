@@ -27,7 +27,7 @@ public class DBconnect {
 	private static final String SELECT_QUERY7 = "SELECT user_mobile from user_mobile where user_id=?";
 	private static final String SELECT_QUERY8 = "SELECT * from userr where user_name =? and user_id=? ";
 	private static final String SELECT_QUERY9 = "SELECT count(*) as count from articles where article_id=?";
-	private static final String SELECT_QUERY10 = "SELECT * from journals join articles on journal_article_id=article_id join authors on article_author_id=author_id join institution on author_institution_id=institution_id where article_id=?";
+	private static final String SELECT_QUERY10 = "SELECT * from journals join articles on journal_id=article_journal_id join authors on article_author_id=author_id join institution on author_institution_id=institution_id where article_id=?";
 	private static final String SELECT_QUERY11 = "SELECT * from articles";
 	private static final String SELECT_QUERY12 = "SELECT * from authors,institution where author_institution_id=institution_id";
 	private static final String SELECT_QUERY13 = "SELECT * from journals";
@@ -246,7 +246,7 @@ public class DBconnect {
 				String id2 = resultSet.getString("user_id");
 				String name2 = resultSet.getString("user_name");
 				String email = resultSet.getString("user_email");
-				String address = resultSet.getString("user_addresss");
+				String address = resultSet.getString("user_address");
 
 				Constants.ID = id2;
 				Constants.name1 = name2;
@@ -326,6 +326,25 @@ public class DBconnect {
 
 	}
 	
+	public void UserInFB(String id) throws SQLException {
+
+		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+				PreparedStatement stmt = connection
+						.prepareStatement("insert into feedback(user_id) values(?)")) {
+			
+			stmt.setString(1, id);
+			
+			stmt.executeUpdate();
+
+			connection.commit();
+			connection.close();
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+
+	}
 	public boolean validateArticle(String title,String id,String pages,String year,int a1,int a2,int a3,int a4) {
 		try (Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
 

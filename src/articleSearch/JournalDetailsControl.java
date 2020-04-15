@@ -53,8 +53,8 @@ public class JournalDetailsControl implements Initializable {
    
 	     // Window owner = mySearchArticle.getScene().getWindow();
 	   	  
-	   	  String query="Select count(*) as count from journals,articles where journal_article_id=article_id";
-	   	  String query2="Select * from articles,journals where journal_article_id=article_id";
+	   	  String query="Select count(*) as count from journals,articles where journal_id=article_journal_id";
+	   	  String query2="Select * from articles,journals where journal_id=article_journal_id";
 	   	  String title=null,id=null,pages=null,year=null,pub=null;
 	      int opt=0;
 	      int opt1=0,opt2=0,opt3=0,opt4=0,opt5=0;
